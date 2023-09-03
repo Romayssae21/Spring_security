@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Table(name = "userTbl")
 @Entity
-public class users implements UserDetails {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
