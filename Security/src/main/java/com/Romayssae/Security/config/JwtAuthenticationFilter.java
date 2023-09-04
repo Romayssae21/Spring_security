@@ -18,7 +18,7 @@ import java.io.IOException;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService; //load user details from a data source
     @Override
     protected void doFilterInternal(
             @Nonnull HttpServletRequest request,
