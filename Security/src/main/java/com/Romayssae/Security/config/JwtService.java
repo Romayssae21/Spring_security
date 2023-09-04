@@ -46,6 +46,22 @@ public class JwtService {
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
+
+    /* Make sure that the username that we have within the token is the same as the username that we have as an input
+    and check the expiration Date */
+    public boolean isTokenValid(String token, UserDetails userDetails){
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
+
+    private boolean isTokenExpired(String token) {
+        return extractExpirationDate(token).before(new Date());
+    }
+
+    private Date extractExpirationDate(String token) {
+        return extractedClaim(token,Claims::getExpiration);
+    }
+
     private Claims extractAllClaims(String token){
         return Jwts
                 .parserBuilder()
