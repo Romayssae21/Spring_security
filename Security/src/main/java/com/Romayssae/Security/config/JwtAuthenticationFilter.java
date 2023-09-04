@@ -36,6 +36,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         //Extract the user email :
         // need a class that can manipulate JWT token to extract user email
-        userEmail =jwtService.extractUserName(jwt);
+        userEmail =jwtService.extractUsername(jwt);
     }
 }

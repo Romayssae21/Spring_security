@@ -13,8 +13,8 @@ import java.util.function.Function;
 @Service
 public class JwtService {
     private static final String SECRET_KEY= "JOVqqJGrESUR/4UcePTpzjwaYde3qQNa38XChjTbFRe52dFAA8S6ahENFYUDr/aX";
-    public String extractUserName(String token) {
-        return null;
+    public String extractUsername(String token) {
+        return extractedClaim(token,Claims::getSubject);
     }
     //Generic method:
     public <T> T extractedClaim(String token, Function<Claims,T> claimResolver){
